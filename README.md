@@ -8,8 +8,8 @@ var kapitalize = require('kapitalize')({
     pass:'xD'
 })
 
-kapitalize.exec('getInfo', function(err, info) {
-    //You know what to dooOOoo    
+kapitalize.exec('getNewAddress', function(err, address) {
+    kapitalize.exec('validateAddress', address, console.log)
 })
 ```
 
@@ -67,3 +67,17 @@ All Bitcoin API commands are supported
  + walletpassphrase
  + walletpassphrasechange
 
+## Options
+
+You may pass options to the initialization function or to the `set` command.
+
+```js
+
+var kapitalize = require('kapitalize')({
+    user:'user'
+})
+
+kapitalize.set('pass', 'somn')
+kapitalize.set({port:8331})
+
+```
