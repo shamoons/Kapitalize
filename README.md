@@ -1,5 +1,7 @@
 # Kapitalize
 
+`npm install kapitalize`
+
 Kapitalize is a Bitcoin client for node.
 
 ```js
@@ -81,3 +83,10 @@ kapitalize.set('pass', 'somn')
 kapitalize.set({port:8331})
 
 ```
+
+Available options and default values:
+
++ Host *localhost*
++ Port *8332*
++ User
++ Pass
