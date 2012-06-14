@@ -1,0 +1,10 @@
+{
+    "name": "kapitalize",
+    "version": "0.0.1",
+    "description": "Industrious Bitcoin client",
+    "keywords": ["bitcoin"],
+    "repository": "git://github.com/Weltschmerz/Kapitalize.git",
+    "author": "Weltschmerz <chlavois@gmail.com>",
+    "main": "lib/kapitalize.js",
+    "engines": { "node": ">= 0.4.0" }
+}
