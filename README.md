@@ -5,14 +5,16 @@
 Kapitalize is a Bitcoin client for node.
 
 ```js
-var kapitalize = require('kapitalize')({
-    user:'Macintyre, John',
-    pass:'xD'
+var kapitalize = require('kapitalize')()
+
+kapitalize.auth('Macintyre, John', 'mypassword')
+
+kapitalize.getNewAddress(function(err, address) {
+    
+    kapitalize.validateAddress(address, console.log)
+
 })
 
-kapitalize.exec('getNewAddress', function(err, address) {
-    kapitalize.exec('validateAddress', address, console.log)
-})
 ```
 
 ## Methods
@@ -31,7 +33,7 @@ Generates authorization header, returns `this` for chainability
 
 ## Commands
 
-All Bitcoin API commands are supported
+All Bitcoin API commands are supported, in lowercase or camelcase form.
 
 + addmultisigaddress
 + backupwallet
