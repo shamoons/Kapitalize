@@ -86,7 +86,7 @@ kapitalize.set({port:8331})
 
 Available options and default values:
 
-+ Host *localhost*
-+ Port *8332*
-+ User
-+ Pass
++ host *localhost*
++ port *8332*
++ user
++ pass
