@@ -33,7 +33,7 @@ Generates authorization header, returns `this` for chainability
 
 ## Commands
 
-All Bitcoin API commands are supported, in lowercase or camelcase form.
+All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list) commands are supported, in lowercase or camelcase form.
 
 <table class="wikitable">
 <tr>
