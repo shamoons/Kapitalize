@@ -20,12 +20,11 @@ kapitalize.exec('getNewAddress', function(err, address) {
 ### .set(key [string, object], value [optional])
 
 Accepts either key & value strings or an Object containing settings.
+Returns `this` for chainability.
 
 ### .exec(command [string], <arguments>, callback [function])
 
 Executes the given command with optional arguments. Function `callback` defaults to `console.log`.
-
-First argument 
 
 ## Commands
 
