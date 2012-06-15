@@ -15,63 +15,75 @@ kapitalize.exec('getNewAddress', function(err, address) {
 })
 ```
 
+## Methods
+
+### .set(key [string, object], value [optional])
+
+Accepts either key & value strings or an Object containing settings.
+
+### .exec(command [string], <arguments>, callback [function])
+
+Executes the given command with optional arguments. Function `callback` defaults to `console.log`.
+
+First argument 
+
 ## Commands
 
 All Bitcoin API commands are supported
 
- + addmultisigaddress
- + backupwallet
- + dumpprivkey
- + encryptwallet
- + getaccount
- + getaccountaddress
- + getaddressesbyaccount
- + getbalance
- + getblock
- + getblockcount
- + getblockhash
- + getblockcount
- + getconnectioncount
- + getdifficulty
- + getgenerate
- + gethashespersec
- + gethashespersec
- + getinfo
- + getmemorypool
- + getmemorypool
- + getmininginfo
- + getnewaddress
- + getreceivedbyaccount
- + getreceivedbyaddress
- + gettransaction
- + getwork
- + help
- + importprivkey
- + keypoolrefill
- + keypoolrefill
- + listaccounts
- + listreceivedbyaccount
- + listreceivedbyaddress
- + listsinceblock
- + listtransactions
- + move
- + sendfrom
- + sendmany
- + sendtoaddress
- + setaccount
- + setgenerate
- + settxfee
- + signmessage
- + stop
- + validateaddress
- + verifymessage
- + walletlock
- + walletpassphrase
- + walletpassphrasechange
++ addmultisigaddress
++ backupwallet
++ dumpprivkey
++ encryptwallet
++ getaccount
++ getaccountaddress
++ getaddressesbyaccount
++ getbalance
++ getblock
++ getblockcount
++ getblockhash
++ getblockcount
++ getconnectioncount
++ getdifficulty
++ getgenerate
++ gethashespersec
++ gethashespersec
++ getinfo
++ getmemorypool
++ getmemorypool
++ getmininginfo
++ getnewaddress
++ getreceivedbyaccount
++ getreceivedbyaddress
++ gettransaction
++ getwork
++ help
++ importprivkey
++ keypoolrefill
++ keypoolrefill
++ listaccounts
++ listreceivedbyaccount
++ listreceivedbyaddress
++ listsinceblock
++ listtransactions
++ move
++ sendfrom
++ sendmany
++ sendtoaddress
++ setaccount
++ setgenerate
++ settxfee
++ signmessage
++ stop
++ validateaddress
++ verifymessage
++ walletlock
++ walletpassphrase
++ walletpassphrasechange
 
 ## Options
 
-You may pass options to the initialization function or to the `set` command.
+You may pass options to the initialization function or to the `set` method.
 
 ```js
 
