@@ -17,14 +17,17 @@ kapitalize.exec('getNewAddress', function(err, address) {
 
 ## Methods
 
-### .set(key [string, object], value [optional])
-
-Accepts either key & value strings or an Object containing settings.
-Returns `this` for chainability.
-
 ### .exec(command [string], <arguments>, callback [function])
 
 Executes the given command with optional arguments. Function `callback` defaults to `console.log`.
+
+### .set(key [string, object], value [optional])
+
+Accepts either key & value strings or an Object containing settings, returns `this` for chainability.
+
+### .auth(user [string], pass [string])
+
+Generates authorization header, returns `this` for chainability
 
 ## Commands
 
