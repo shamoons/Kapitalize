@@ -2,7 +2,9 @@
 
 `npm install kapitalize`
 
-Kapitalize is a Bitcoin client for node.
+Kapitalize is an industrious Bitcoin client for node.
+
+## Example
 
 ```js
 var kapitalize = require('kapitalize')()
@@ -17,15 +19,64 @@ kapitalize.getNewAddress(function(err, address) {
 
 ```
 
+## Chaining
+
+Pretty much everything in Kapitalize is chainable.
+
+```js
+var kapitalize = require('kapitalize')()
+
+kapitalize
+.auth('Macintyre', 'mypassword')
+.set('host', '127.0.0.1')
+.set({
+    port:8332
+})
+.getNewAddress()
+.getBalance()
+```
+
 ## Methods
 
+The [Bitcoin API](https://github.com/Weltschmerz/Kapitalize#commands) is supported as direct methods. Use either camelcase or lowercase.
+
+```js
+kapitalize.getNewAddress(function(err, address) {
+
+    this.validateaddress(address, function(err, info) {
+
+    })
+
+})
+```
 ### .exec(command [string], <arguments>, callback [function])
 
 Executes the given command with optional arguments. Function `callback` defaults to `console.log`.
+All of the API commands are supported in lowercase or camelcase. Or uppercase. Anycase!
+
+```js
+kapitalize.exec('getNewAddress')
+
+kapitalize.exec('getbalance', function(err, balance) {
+
+})
+```
 
 ### .set(key [string, object], value [optional])
 
 Accepts either key & value strings or an Object containing settings, returns `this` for chainability.
+
+```js
+kapitalize.set('host', '127.0.0.1')
+```
+
+### .get(key [string])
+
+Returns the specified option's value
+
+```js
+kapitalize.get('user')
+```
 
 ### .auth(user [string], pass [string])
 
@@ -35,7 +86,7 @@ Generates authorization header, returns `this` for chainability
 
 All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list) commands are supported, in lowercase or camelcase form.
 
-<table class="wikitable">
+<table>
 <tr>
 <th> Command </th>
 <th> Parameters </th>
@@ -44,43 +95,43 @@ All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_l
 </th></tr>
 <tr>
 <td> addmultisigaddress </td>
-<td> <nrequired< <'["key","key"]'< [account] </td>
+<td> [nrequired] ["key","key"] [account] </td>
 <td> <b>Currently only available on testnet</b> Add a nrequired-to-sign multisignature address to the wallet. Each key is a bitcoin address or hex-encoded public key. If [account] is specified, assign address to [account]. </td>
 <td> N
 </td></tr>
 <tr>
 <td> backupwallet </td>
-<td> <destination< </td>
+<td> [destination] </td>
 <td> Safely copies wallet.dat to destination, which can be a directory or a path with filename. </td>
 <td> N
 </td></tr>
 <tr>
 <td> dumpprivkey </td>
-<td> <bitcoinaddress< </td>
+<td> [bitcoinaddress] </td>
 <td> Reveals the private key corresponding to <bitcoinaddress< </td>
 <td> Y
 </td></tr>
 <tr>
 <td> encryptwallet </td>
-<td> <passphrase< </td>
+<td> [passphrase] </td>
 <td> Encrypts the wallet with <passphrase<. </td>
 <td> N
 </td></tr>
 <tr>
 <td> getaccount </td>
-<td> <bitcoinaddress< </td>
+<td> [bitcoinaddress] </td>
 <td> Returns the account associated with the given address. </td>
 <td> N
 </td></tr>
 <tr>
 <td> getaccountaddress </td>
-<td> <account< </td>
+<td> [account] </td>
 <td> Returns the current bitcoin address for receiving payments to this account. </td>
 <td> N
 </td></tr>
 <tr>
 <td> getaddressesbyaccount </td>
-<td> <account< </td>
+<td> [account] </td>
 <td> Returns the list of addresses for the given account. </td>
 <td> N
 </td></tr>
@@ -92,7 +143,7 @@ All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_l
 </td></tr>
 <tr>
 <td> getblock </td>
-<td> <hash< </td>
+<td> [hash] </td>
 <td> Returns information about the given block hash. </td>
 <td> N
 </td></tr>
@@ -104,7 +155,7 @@ All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_l
 </td></tr>
 <tr>
 <td> getblockhash </td>
-<td> <index< </td>
+<td> [index] </td>
 <td> Returns hash of block in best-block-chain at <index< </td>
 <td> N
 </td></tr>
@@ -192,13 +243,13 @@ All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_l
 </td></tr>
 <tr>
 <td> getreceivedbyaddress </td>
-<td> <bitcoinaddress< [minconf=1] </td>
+<td> [bitcoinaddress] [minconf=1] </td>
 <td> Returns the total amount received by <bitcoinaddress< in transactions with at least [minconf] confirmations. While some might consider this obvious, value reported by this only considers *receiving* transactions. It does not check payments that have been made *from* this address. In other words, this is not "getaddressbalance". Works only for addresses in the local wallet, external addresses will always show 0. </td>
 <td> N
 </td></tr>
 <tr>
 <td> gettransaction </td>
-<td> <txid< </td>
+<td> [txid] </td>
 <td> Returns an object about the given transaction containing:
 <ul><li> "amount": total amount of the transaction
 </li><li> "confirmations":  number of confirmations of the transaction
@@ -236,7 +287,7 @@ All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_l
 </td></tr>
 <tr>
 <td> importprivkey </td>
-<td> <bitcoinprivkey< [label] </td>
+<td> [bitcoinprivkey] [label] </td>
 <td> Adds a private key (as returned by dumpprivkey) to your wallet. </td>
 <td> Y
 </td></tr>
@@ -292,50 +343,52 @@ All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_l
 </td></tr>
 <tr>
 <td> move </td>
-<td> <fromaccount< <toaccount< <amount< [minconf=1] [comment] </td>
+<td> [fromaccount] [toaccount] [amount] [minconf=1] [comment] </td>
 <td> Move from one account in your wallet to another </td>
 <td> N
 </td></tr>
 <tr>
 <td> sendfrom </td>
-<td> <fromaccount< <tobitcoinaddress< <amount< [minconf=1] [comment] [comment-to] </td>
+<td> [fromaccount] [tobitcoinaddress] [amount] [minconf=1] [comment] [comment-to] </td>
 <td> <amount< is a real and is rounded to 8 decimal places. Will send the given amount to the given address, ensuring the account has a valid balance using [minconf] confirmations. Returns the transaction ID if successful (not in JSON object). </td>
 <td> Y
 </td></tr>
 <tr>
 <td> sendmany </td>
-<td> <fromaccount< {address:amount,...} [minconf=1] [comment] </td>
+<td> [fromaccount] [address:amount,...] [minconf=1] [comment] </td>
 <td> amounts are double-precision floating point numbers </td>
 <td> Y
 </td></tr>
 <tr>
 <td> sendtoaddress </td>
-<td> <bitcoinaddress< <amount< [comment] [comment-to] </td>
+<td> [bitcoinaddress] [amount] [comment] [comment-to] </td>
 <td> <amount< is a real and is rounded to 8 decimal places. Returns the transaction ID <txid< if successful. </td>
 <td> Y
 </td></tr>
 <tr>
 <td> setaccount </td>
-<td> <bitcoinaddress< <account< </td>
+<td> [bitcoinaddress] [account] </td>
 <td> Sets the account associated with the given address. Assigning address that is already assigned to the same account will create a new address associated with that account. </td>
 <td> N
 </td></tr>
 <tr>
 <td> setgenerate </td>
-<td> <generate< [genproclimit] </td>
-<td> <generate< is true or false to turn generation on or off.<br />Generation is limited to [genproclimit] processors, -1 is unlimited. </td>
+<td> [generate] [genproclimit] </td>
+<td> [generate] is true or false to turn generation on or off.
+
+Generation is limited to [genproclimit] processors, -1 is unlimited. </td>
 <td> N
 </td></tr>
 <tr>
 <td> signmessage </td>
-<td> <bitcoinaddress< <message< </td>
+<td> [bitcoinaddress] [message] </td>
 <td> Sign a message with the private key of an address. </td>
 <td> Y
 </td></tr>
 <tr>
 <td> settxfee </td>
-<td> <amount< </td>
-<td> <amount< is a real and is rounded to the nearest 0.00000001 </td>
+<td> [amount] </td>
+<td> [amount] is a real and is rounded to the nearest 0.00000001 </td>
 <td> N
 </td></tr>
 <tr>
@@ -346,13 +399,13 @@ All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_l
 </td></tr>
 <tr>
 <td> validateaddress </td>
-<td> <bitcoinaddress< </td>
-<td> Return information about <bitcoinaddress<. </td>
+<td> [bitcoinaddress] </td>
+<td> Return information about [bitcoinaddress]. </td>
 <td> N
 </td></tr>
 <tr>
 <td> verifymessage </td>
-<td> <bitcoinaddress< <signature< <message< </td>
+<td> [bitcoinaddress] [signature] [message] </td>
 <td> Verify a signed message. </td>
 <td> N
 </td></tr>
@@ -364,13 +417,13 @@ All [Bitcoin API](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_l
 </td></tr>
 <tr>
 <td> walletpassphrase </td>
-<td> <passphrase< <timeout< </td>
+<td> [passphrase] [timeout] </td>
 <td> Stores the wallet decryption key in memory for <timeout< seconds. </td>
 <td> N
 </td></tr>
 <tr>
 <td> walletpassphrasechange </td>
-<td> <oldpassphrase< <newpassphrase< </td>
+<td> [oldpassphrase] [newpassphrase] </td>
 <td> Changes the wallet passphrase from <oldpassphrase< to <newpassphrase<. </td>
 <td> N
 </td></tr></table>

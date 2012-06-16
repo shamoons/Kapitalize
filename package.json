@@ -1,6 +1,6 @@
 {
     "name": "kapitalize",
-    "version": "0.2.2",
+    "version": "0.3.0",
     "description": "Industrious Bitcoin client",
     "keywords": ["bitcoin"],
     "repository": "git://github.com/Weltschmerz/Kapitalize.git",
