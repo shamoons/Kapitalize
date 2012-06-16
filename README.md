@@ -1,10 +1,10 @@
 # Kapitalize
 
+Kapitalize is an industrious Bitcoin client for node.
+
 `npm install kapitalize`
 
 `npm test kapitalize`
-
-Kapitalize is an industrious Bitcoin client for node.
 
 ## Example
 
