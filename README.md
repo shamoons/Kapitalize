@@ -51,7 +51,7 @@ kapitalize.getNewAddress(function(err, address) {
 
 })
 ```
-### .exec(command [string], <arguments>, callback [function])
+### .exec(command [string], ...arguments..., callback [function])
 
 Executes the given command with optional arguments. Function `callback` defaults to `console.log`.
 All of the API commands are supported in lowercase or camelcase. Or uppercase. Anycase!
