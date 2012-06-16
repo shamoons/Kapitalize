@@ -1,6 +1,7 @@
 # Kapitalize
 
 `npm install kapitalize`
+`npm test kapitalize`
 
 Kapitalize is an industrious Bitcoin client for node.
 
