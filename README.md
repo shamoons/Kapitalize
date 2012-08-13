@@ -4,8 +4,6 @@ Kapitalize is an industrious Bitcoin client for node.
 
 `npm install kapitalize`
 
-`npm test kapitalize`
-
 ## Example
 
 ```js
@@ -14,9 +12,7 @@ var kapitalize = require('kapitalize')()
 kapitalize.auth('Macintyre, John', 'mypassword')
 
 kapitalize.getNewAddress(function(err, address) {
-    
     kapitalize.validateAddress(address, console.log)
-
 })
 
 ```
@@ -44,11 +40,9 @@ The [Bitcoin API](https://github.com/Weltschmerz/Kapitalize#commands) is support
 
 ```js
 kapitalize.getNewAddress(function(err, address) {
-
     this.validateaddress(address, function(err, info) {
 
     })
-
 })
 ```
 ### .exec(command [string], ...arguments..., callback [function])
